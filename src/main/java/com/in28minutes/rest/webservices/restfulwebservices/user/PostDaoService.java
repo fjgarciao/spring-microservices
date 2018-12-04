@@ -2,7 +2,6 @@ package com.in28minutes.rest.webservices.restfulwebservices.user;
 
 import org.springframework.stereotype.Component;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -28,11 +27,11 @@ public class PostDaoService {
         postsByUser.put(3, new ArrayList<>());
     }
 
-    public List<Post> findAll(Integer userId) {
+    public List<Post> findAll(int userId) {
         return postsByUser.get(userId);
     }
 
-    public Post save(Integer userId, Post post) {
+    public Post save(int userId, Post post) {
         if (post.getId() == null) {
             post.setId(++postCounter);
         }
@@ -49,13 +48,19 @@ public class PostDaoService {
         return post;
     }
 
-    public Post findOne(Integer userId, Integer postId) {
+    public Post findOne(int userId, int postId) {
         if (postsByUser.containsKey(userId)) {
             return postsByUser.get(userId).stream()
-                       .filter(p -> p.getId().equals(postId))
+                       .filter(p -> p.getId() == postId)
                        .findFirst()
                        .orElse(null);
         }
         return null;
+    }
+
+    public void deleteAll(int userId) {
+        if (postsByUser.containsKey(userId)) {
+            postsByUser.remove(userId);
+        }
     }
 }
