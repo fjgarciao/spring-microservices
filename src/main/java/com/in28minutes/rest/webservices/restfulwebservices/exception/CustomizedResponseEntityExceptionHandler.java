@@ -1,6 +1,5 @@
 package com.in28minutes.rest.webservices.restfulwebservices.exception;
 
-import com.in28minutes.rest.webservices.restfulwebservices.user.UserNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -20,7 +19,7 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
         return new ResponseEntity<>(exceptionResponse, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-    @ExceptionHandler(UserNotFoundException.class)
+    @ExceptionHandler(NotFoundException.class)
     public final ResponseEntity<?> handleUserNotFoundException(Exception ex, WebRequest request) {
         ExceptionResponse exceptionResponse = getExceptionResponse(ex, request);
         return new ResponseEntity<>(exceptionResponse, HttpStatus.NOT_FOUND);
