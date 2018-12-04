@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 import java.util.List;
+import javax.validation.Valid;
 
 @RestController
 public class UserResource {
@@ -36,7 +37,7 @@ public class UserResource {
     }
 
     @PostMapping("/users")
-    public ResponseEntity<?> createUser(@RequestBody User user) {
+    public ResponseEntity<?> createUser(@Valid @RequestBody User user) {
         User savedUser = userDaoService.save(user);
         URI location = ServletUriComponentsBuilder
             .fromCurrentRequest()
