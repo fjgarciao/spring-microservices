@@ -21,7 +21,9 @@ public class SwaggerConfiguration {
     public static final Contact DEFAULT_CONTACT = new Contact("Javier Garcia", "http://www.fjgarciao.com", "fjgarciao@gmail.com");
     public static final ApiInfo DEFAULT_API_INFO = new ApiInfo("Awesome API Title", "Awesome API Description", "1.0", "urn:tos",
                                                       DEFAULT_CONTACT, "Apache 2.0", "http://www.apache.org/licenses/LICENSE-2.0", new ArrayList<VendorExtension>());
-    private static final Set<String> DEFAULT_PRODUCERS_AND_CONSUMERS = new HashSet<>(Arrays.asList(MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE));
+    private static final Set<String> DEFAULT_PRODUCERS_AND_CONSUMERS = new HashSet<>(
+        Arrays.asList(//MediaType.APPLICATION_XML_VALUE,
+                      MediaType.APPLICATION_JSON_VALUE));
 
     @Bean
     public Docket api() {
