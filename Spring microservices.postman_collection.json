@@ -288,6 +288,50 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Get Filtering",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/filtering",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"filtering"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Filtering List",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/filtering-list",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"filtering-list"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
