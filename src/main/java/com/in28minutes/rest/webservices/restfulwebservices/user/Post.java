@@ -1,18 +1,31 @@
 package com.in28minutes.rest.webservices.restfulwebservices.user;
 
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
+
+@Entity
 public class Post {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "abstract_generator")
+    @SequenceGenerator(name = "abstract_generator", sequenceName = "post_seq", allocationSize = 1)
     private Integer id;
-    private String title;
-    private String text;
+    private String description;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    private User user;
 
     protected Post() {
     }
 
-    public Post(Integer id, String title, String text) {
+    public Post(Integer id, String description) {
         this.id = id;
-        this.title = title;
-        this.text = text;
+        this.description = description;
     }
 
     public Integer getId() {
@@ -23,20 +36,20 @@ public class Post {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getDescription() {
+        return description;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public String getText() {
-        return text;
+    public User getUser() {
+        return user;
     }
 
-    public void setText(String text) {
-        this.text = text;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Override
@@ -58,8 +71,7 @@ public class Post {
     public String toString() {
         return "Post{" +
                "id=" + id +
-               ", title='" + title + '\'' +
-               ", text='" + text + '\'' +
+               ", description='" + description + '\'' +
                '}';
     }
 }

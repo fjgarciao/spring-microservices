@@ -14,13 +14,13 @@ public class PostDaoService {
 
     static {
         List<Post> posts1 = new ArrayList<>();
-        posts1.add(new Post(1, "Title 1", "Text 1"));
-        posts1.add(new Post(2, "Title 2", "Text 2"));
+        posts1.add(new Post(1, "Title 1"));
+        posts1.add(new Post(2, "Title 2"));
 
         postsByUser.put(1, posts1);
 
         List<Post> posts2 = new ArrayList<>();
-        posts2.add(new Post(3, "Title 3", "Text 3"));
+        posts2.add(new Post(3, "Title 3"));
 
         postsByUser.put(2, posts2);
 
