@@ -36,6 +36,37 @@
 			"response": []
 		},
 		{
+			"name": "Create user JPA",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Joseph\",\n\t\"birthDate\": \"2010-12-04T12:14:17.126+0000\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/jpa/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"jpa",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Get user 1",
 			"request": {
 				"method": "GET",
@@ -548,6 +579,54 @@
 					"path": [
 						"person",
 						"produces"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get JPA Users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/jpa/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"jpa",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get JPA User 1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/jpa/users/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"jpa",
+						"users",
+						"1"
 					]
 				}
 			},
