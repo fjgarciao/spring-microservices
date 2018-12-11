@@ -138,6 +138,86 @@
 			"response": []
 		},
 		{
+			"name": "Get JPA posts from user 1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/jpa/users/1/posts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"jpa",
+						"users",
+						"1",
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get JPA posts 1 from user 1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/jpa/users/1/posts/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"jpa",
+						"users",
+						"1",
+						"posts",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete JPA posts 1 from user 1",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/jpa/users/1/posts/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"jpa",
+						"users",
+						"1",
+						"posts",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Create post for user 1",
 			"request": {
 				"method": "POST",
@@ -170,6 +250,39 @@
 			"response": []
 		},
 		{
+			"name": "Create JPA post for user 1",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"description\": \"My third post\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/jpa/users/1/posts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"jpa",
+						"users",
+						"1",
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Delete user 3",
 			"request": {
 				"method": "DELETE",
@@ -188,6 +301,31 @@
 					"path": [
 						"users",
 						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete JPA user 1",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/jpa/users/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"jpa",
+						"users",
+						"1"
 					]
 				}
 			},
@@ -606,7 +744,50 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Get JPA Users",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/jpa/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"jpa",
+								"users"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/hal+json;charset=UTF-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 11 Dec 2018 11:09:06 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"name\": \"AB\",\n    \"birthDate\": \"2018-12-11T11:07:00.419+0000\",\n    \"_links\": {\n        \"all-users\": {\n            \"href\": \"http://localhost:8080/jpa/users\"\n        }\n    }\n}"
+				}
+			]
 		},
 		{
 			"name": "Get JPA User 1",

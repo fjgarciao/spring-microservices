@@ -2,6 +2,7 @@ package com.in28minutes.rest.webservices.restfulwebservices.user;
 
 import java.util.Date;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -31,7 +32,7 @@ public class User {
     @ApiModelProperty(notes = "Birthdate should be in the past")
     private Date birthDate;
 
-    @OneToMany(mappedBy = "user", orphanRemoval = true, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "user", orphanRemoval = true, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Post> posts;
 
     protected User() {

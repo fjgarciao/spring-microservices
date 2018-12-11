@@ -25,10 +25,12 @@ import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
 public class UserJPAResource {
 
     private UserRepository userRepository;
+    private PostRepository postRepository;
 
     @Autowired
-    public UserJPAResource(UserRepository userRepository) {
+    public UserJPAResource(UserRepository userRepository, PostRepository postRepository) {
         this.userRepository = userRepository;
+        this.postRepository = postRepository;
     }
 
     @GetMapping("/users")
@@ -60,14 +62,43 @@ public class UserJPAResource {
 
     @DeleteMapping("/users/{userId}")
     public void deleteUser(@PathVariable Integer userId) {
-        if (!userRepository.existsById(userId)) {
-            throw new NotFoundException(String.format("userId-%s", userId));
-        } else {
-            userRepository.deleteById(userId);
-        }
+        User user = getUserOrException(userId);
+        userRepository.delete(user);
     }
 
     private User getUserOrException(Integer userId) {
         return userRepository.findById(userId).orElseThrow(() -> new NotFoundException(String.format("userId-%s", userId)));
+    }
+
+    @GetMapping("/users/{userId}/posts")
+    public List<Post> retrieveAllUserPosts(@PathVariable Integer userId) {
+        User user = getUserOrException(userId);
+        return user.getPosts();
+    }
+
+    @GetMapping("/users/{userId}/posts/{postId}")
+    public Post retrieveUserPost(@PathVariable Integer userId, @PathVariable Integer postId) {
+        User user = getUserOrException(userId);
+        return postRepository.findByUserAndId(user, postId).orElseThrow(() -> new NotFoundException(String.format("userId-%s,postId-%s", userId, postId)));
+    }
+
+    @PostMapping("/users/{userId}/posts")
+    public ResponseEntity<?> createPost(@PathVariable Integer userId, @Valid @RequestBody Post post) {
+        User user = getUserOrException(userId);
+        post.setUser(user);
+        Post savedPost = postRepository.save(post);
+
+        URI location = ServletUriComponentsBuilder
+            .fromCurrentRequest()
+            .path("/{id}")
+            .buildAndExpand(savedPost.getId()).toUri();
+        return ResponseEntity.created(location).build();
+    }
+
+    @DeleteMapping("/users/{userId}/posts/{postId}")
+    public void deleteUser(@PathVariable Integer userId, @PathVariable Integer postId) {
+        User user = getUserOrException(userId);
+        Post post = postRepository.findByUserAndId(user, postId).orElseThrow(() -> new NotFoundException(String.format("userId-%s,postId-%s", userId, postId)));
+        postRepository.delete(post);
     }
 }
